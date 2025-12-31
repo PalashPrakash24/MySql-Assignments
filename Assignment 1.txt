@@ -1,0 +1,206 @@
+QUESTION 1 : Login to MySQL and view all databases already present. You should get following result :
+
+Enter password: ******
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 8
+Server version: 8.0.42 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2025, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| firstbit_sql       |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.10 sec)
+
+
+QUESTION 2 : Write an SQL statement to create a simple table countries including columns country_id,country_name and region_id. After this display the structure of table as below 
+
+mysql> CREATE TABLE COUNTRIES ( COUNTRY_ID INT , COUNTRY_NAME VARCHAR(20),REGION_ID INT);
+Query OK, 0 rows affected (0.03 sec)
+mysql> DESC COUNTRIES;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| COUNTRY_ID   | int         | YES  |     | NULL    |       |
+| COUNTRY_NAME | varchar(20) | YES  |     | NULL    |       |
+| REGION_ID    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+QUESTION 3 : Write an SQL statement to create a table named jobs including columns job_id, job_title, min_salary, max_salary and check whether the max_salary amount exceeding the upper limit 25000. Also set job_id as primary key and entering null values for job_title is not allowed.
+
+mysql> CREATE TABLE JOBS ( JOB_ID INT, JOB_TITLE CHAR(2), MIN_SALARY INT,MAX_SALARY INT);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> ALTER TABLE JOBS MODIFY COLUMN MAX_SALARY INT CHECK ( MAX_SALARY > 0 AND MAX_SALARY <= 25000);
+Query OK, 0 rows affected (0.08 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE JOBS ADD PRIMARY KEY (JOB_ID);
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE JOBS MODIFY COLUMN JOB_TITLE CHAR(2) NOT NULL;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC JOBS;
++------------+---------+------+-----+---------+-------+
+| Field      | Type    | Null | Key | Default | Extra |
++------------+---------+------+-----+---------+-------+
+| JOB_ID     | int     | NO   | PRI | NULL    |       |
+| JOB_TITLE  | char(2) | NO   |     | NULL    |       |
+| MIN_SALARY | int     | YES  |     | NULL    |       |
+| MAX_SALARY | int     | YES  |     | NULL    |       |
++------------+---------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> SHOW CREATE TABLE JOBS;
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table | Create Table                                                                                                                                                                                                                                                                                                                     |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| JOBS  | CREATE TABLE `jobs` (
+  `JOB_ID` int NOT NULL,
+  `JOB_TITLE` char(2) NOT NULL,
+  `MIN_SALARY` int DEFAULT NULL,
+  `MAX_SALARY` int DEFAULT NULL,
+  PRIMARY KEY (`JOB_ID`),
+  CONSTRAINT `jobs_chk_1` CHECK (((`MAX_SALARY` > 0) and (`MAX_SALARY` <= 25000)))
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++-------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.01 sec)
+
+
+QUESTION 4 : 
+
+
+mysql> CREATE TABLE JOB_HISTRY (EMPLOYEE_ID INT, START_DATE DATE, END_DATE DATE , JOB_ID INT, DEPARTMENT_ID INT);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESC JOB_HISTRY;
++---------------+------+------+-----+---------+-------+
+| Field         | Type | Null | Key | Default | Extra |
++---------------+------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int  | YES  |     | NULL    |       |
+| START_DATE    | date | YES  |     | NULL    |       |
+| END_DATE      | date | YES  |     | NULL    |       |
+| JOB_ID        | int  | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int  | YES  |     | NULL    |       |
++---------------+------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+
+QUESTION 5 :
+
+
+mysql> ALTER TABLE COUNTRIES MODIFY COLUMN COUNTRY_ID INT UNIQUE;
+Query OK, 0 rows affected (0.04 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC COUNTRIES;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| COUNTRY_ID   | int         | YES  | UNI | NULL    |       |
+| COUNTRY_NAME | varchar(20) | YES  |     | NULL    |       |
+| REGION_ID    | int         | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+
+QUESTION 6 :
+
+
+mysql> CREATE TABLE JOBS (JOB_ID INT, JOB_TITLE VARCHAR(20),MIN_SALARY INT, MAX_SALARY INT);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> DESC JOBS;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| JOB_ID     | int         | YES  |     | NULL    |       |
+| JOB_TITLE  | varchar(20) | YES  |     | NULL    |       |
+| MIN_SALARY | int         | YES  |     | NULL    |       |
+| MAX_SALARY | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> ALTER TABLE JOBS MODIFY JOB_TITLE  VARCHAR(20) DEFAULT '';
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE JOBS MODIFY COLUMN MIN_SALARY INT DEFAULT 8000;
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC JOBS;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| JOB_ID     | int         | YES  |     | NULL    |       |
+| JOB_TITLE  | varchar(20) | YES  |     |         |       |
+| MIN_SALARY | int         | YES  |     | 8000    |       |
+| MAX_SALARY | int         | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+
+QUESTION 8 :
+
+
+mysql> CREATE TABLE EMPLOYEE (EMPLOYEE_ID INT, FIRST_NAME VARCHAR(20), LAST_NAME VARCHAR(20),EMAIL VARCHAR(30), PHONE_NUMBER INT, HIRE_DATE DATE, JOB_ID INT, SALARY INT, COMMISSION FLOAT(3,1),MANAGER_ID INT, DEPARTMENT_ID INT);
+Query OK, 0 rows affected, 1 warning (0.06 sec)
+
+mysql> DESC EMPLOYEE;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | YES  |     | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(30) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | date        | YES  |     | NULL    |       |
+| JOB_ID        | int         | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| COMMISSION    | float(3,1)  | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> ALTER TABLE EMPLOYEE MODIFY EMPLOYEE_ID INT UNIQUE;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC EMPLOYEE;
++---------------+-------------+------+-----+---------+-------+
+| Field         | Type        | Null | Key | Default | Extra |
++---------------+-------------+------+-----+---------+-------+
+| EMPLOYEE_ID   | int         | YES  | UNI | NULL    |       |
+| FIRST_NAME    | varchar(20) | YES  |     | NULL    |       |
+| LAST_NAME     | varchar(20) | YES  |     | NULL    |       |
+| EMAIL         | varchar(30) | YES  |     | NULL    |       |
+| PHONE_NUMBER  | int         | YES  |     | NULL    |       |
+| HIRE_DATE     | date        | YES  |     | NULL    |       |
+| JOB_ID        | int         | YES  |     | NULL    |       |
+| SALARY        | int         | YES  |     | NULL    |       |
+| COMMISSION    | float(3,1)  | YES  |     | NULL    |       |
+| MANAGER_ID    | int         | YES  |     | NULL    |       |
+| DEPARTMENT_ID | int         | YES  |     | NULL    |       |
++---------------+-------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)

@@ -1,0 +1,266 @@
+Question 1.select first_name as 'First name',last_name as 'Last name' from employees;
+
++------------+-----------+
+| First name | Last name |
++------------+-----------+
+| STEVEN     | KING      |
+| DIANA      | LORENTZ   |
+| LEX        | DE HAAN   |
+| NEENA      | KOCHHAR   |
+| ALEXANDER  | HUNOLD    |
+| BRUCE      | ERNST     |
+| DAVID      | AUSTIN    |
+| VALLI      | PATABALLA |
+| NANCY      | GREENBERG |
+| DANIEL     | FAVIET    |
++------------+-----------+
+
+Question 2.select distinct emplolyee_id from employees;
+
++--------------+
+| emplolyee_id |
++--------------+
+|          100 |
+|          107 |
+|          102 |
+|          101 |
+|          103 |
+|          104 |
+|          105 |
+|          106 |
+|          108 |
+|          109 |
++--------------+
+
+Question 3. select * from employees order by first_name desc;
+
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+| emplolyee_id | first_name | last_name | email    | phone_number | hire_date  | job_id  | salary | commision_pct | manager_id | department_id |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+|          106 | VALLI      | PATABALLA | VPATABAL | 590.423.4560 | 1987-06-24 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          100 | STEVEN     | KING      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  24000 |          0.00 |        200 |            10 |
+|          101 | NEENA      | KOCHHAR   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          108 | NANCY      | GREENBERG | NGREENBE | 515.124.4569 | 1987-06-26 | SA_MAN  |  12000 |          0.00 |        145 |            80 |
+|          102 | LEX        | DE HAAN   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          107 | DIANA      | LORENTZ   | DLORENTZ | 590.423.5567 | 1987-06-25 | IT_PROG |   4200 |          0.00 |        114 |            30 |
+|          105 | DAVID      | AUSTIN    | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          109 | DANIEL     | FAVIET    | DFAVIET  | 515.124.4169 | 1987-06-27 | SA_MAN  |   9000 |          0.00 |        145 |            80 |
+|          104 | BRUCE      | ERNST     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000 |          0.00 |        103 |            60 |
+|          103 | ALEXANDER  | HUNOLD    | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9000 |          0.00 |        103 |            60 |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+
+4. select first_name,last_name,salary,salary*0.15 as PF from employees;
+
++------------+-----------+--------+---------+
+| first_name | last_name | salary | PF      |
++------------+-----------+--------+---------+
+| STEVEN     | KING      |  24000 | 3600.00 |
+| DIANA      | LORENTZ   |   4200 |  630.00 |
+| LEX        | DE HAAN   |  17000 | 2550.00 |
+| NEENA      | KOCHHAR   |  17000 | 2550.00 |
+| ALEXANDER  | HUNOLD    |   9000 | 1350.00 |
+| BRUCE      | ERNST     |   6000 |  900.00 |
+| DAVID      | AUSTIN    |   4800 |  720.00 |
+| VALLI      | PATABALLA |   4800 |  720.00 |
+| NANCY      | GREENBERG |  12000 | 1800.00 |
+| DANIEL     | FAVIET    |   9000 | 1350.00 |
++------------+-----------+--------+---------+
+
+5. SELECT emplolyee_id, first_name, last_name
+    -> FROM employees
+    -> ORDER BY salary DESC;
+
++--------------+------------+-----------+
+| emplolyee_id | first_name | last_name |
++--------------+------------+-----------+
+|          100 | STEVEN     | KING      |
+|          102 | LEX        | DE HAAN   |
+|          101 | NEENA      | KOCHHAR   |
+|          108 | NANCY      | GREENBERG |
+|          103 | ALEXANDER  | HUNOLD    |
+|          109 | DANIEL     | FAVIET    |
+|          104 | BRUCE      | ERNST     |
+|          105 | DAVID      | AUSTIN    |
+|          106 | VALLI      | PATABALLA |
+|          107 | DIANA      | LORENTZ   |
++--------------+------------+-----------+
+
+6. select sum(salary) as total_salary from employees;
+
++--------------+
+| total_salary |
++--------------+
+|       107800 |
++--------------+
+
+7. select max(salary) as maximum_salary, min(salary)as minimum_salary from employees;
+
++----------------+----------------+
+| maximum_salary | minimum_salary |
++----------------+----------------+
+|          24000 |           4200 |
++----------------+----------------+
+
+8. select avg(salary) as avg_salary, count(emplolyee_id)as total_employee from employees;
+
++------------+----------------+
+| avg_salary | total_employee |
++------------+----------------+
+| 10780.0000 |             10 |
++------------+----------------+
+
+9. select count(*)as total_employee from employees;
+
++----------------+
+| total_employee |
++----------------+
+|             10 |
++----------------+
+
+10. select distinct job_id from employees;
+
++---------+
+| job_id  |
++---------+
+| AD_PRES |
+| IT_PROG |
+| AD_VP   |
+| SA_MAN  |
++---------+
+
+11. select * from employees limit 0,10;
+
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+| emplolyee_id | first_name | last_name | email    | phone_number | hire_date  | job_id  | salary | commision_pct | manager_id | department_id |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+|          100 | STEVEN     | KING      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  24000 |          0.00 |        200 |            10 |
+|          107 | DIANA      | LORENTZ   | DLORENTZ | 590.423.5567 | 1987-06-25 | IT_PROG |   4200 |          0.00 |        114 |            30 |
+|          102 | LEX        | DE HAAN   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          101 | NEENA      | KOCHHAR   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          103 | ALEXANDER  | HUNOLD    | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9000 |          0.00 |        103 |            60 |
+|          104 | BRUCE      | ERNST     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000 |          0.00 |        103 |            60 |
+|          105 | DAVID      | AUSTIN    | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          106 | VALLI      | PATABALLA | VPATABAL | 590.423.4560 | 1987-06-24 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          108 | NANCY      | GREENBERG | NGREENBE | 515.124.4569 | 1987-06-26 | SA_MAN  |  12000 |          0.00 |        145 |            80 |
+|          109 | DANIEL     | FAVIET    | DFAVIET  | 515.124.4169 | 1987-06-27 | SA_MAN  |   9000 |          0.00 |        145 |            80 |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+
+
+12. select * from employees where salary not between 10000 and 15000;
+
+
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+| emplolyee_id | first_name | last_name | email    | phone_number | hire_date  | job_id  | salary | commision_pct | manager_id | department_id |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+|          100 | STEVEN     | KING      | SKING    | 515.123.4567 | 1987-06-17 | AD_PRES |  24000 |          0.00 |        200 |            10 |
+|          107 | DIANA      | LORENTZ   | DLORENTZ | 590.423.5567 | 1987-06-25 | IT_PROG |   4200 |          0.00 |        114 |            30 |
+|          102 | LEX        | DE HAAN   | LDEHAAN  | 515.123.4569 | 1987-06-19 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          101 | NEENA      | KOCHHAR   | NKOCHHAR | 515.123.4568 | 1987-06-18 | AD_VP   |  17000 |          0.00 |        200 |            10 |
+|          103 | ALEXANDER  | HUNOLD    | AHUNOLD  | 590.423.4567 | 1987-06-20 | IT_PROG |   9000 |          0.00 |        103 |            60 |
+|          104 | BRUCE      | ERNST     | BERNST   | 590.423.4568 | 1987-06-21 | IT_PROG |   6000 |          0.00 |        103 |            60 |
+|          105 | DAVID      | AUSTIN    | DAUSTIN  | 590.423.4569 | 1987-06-22 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          106 | VALLI      | PATABALLA | VPATABAL | 590.423.4560 | 1987-06-24 | IT_PROG |   4800 |          0.00 |        103 |            60 |
+|          109 | DANIEL     | FAVIET    | DFAVIET  | 515.124.4169 | 1987-06-27 | SA_MAN  |   9000 |          0.00 |        145 |            80 |
++--------------+------------+-----------+----------+--------------+------------+---------+--------+---------------+------------+---------------+
+
+
+13. select first_name,last_name,department_id from employees where department_id IN(30,100) order by department_id;
+
+
++------------+-----------+---------------+
+| first_name | last_name | department_id |
++------------+-----------+---------------+
+| DIANA      | LORENTZ   |            30 |
++------------+-----------+---------------+
+
+
+14. select first_name,last_name,salary from employees where department_id IN(30,100) and salary not between 10000 and 15000;
+
+
++------------+-----------+--------+
+| first_name | last_name | salary |
++------------+-----------+--------+
+| DIANA      | LORENTZ   |   4200 |
++------------+-----------+--------+
+
+
+15. select first_name,last_name,hire_date from employees where year(hire_date)=1987;
+
++------------+-----------+------------+
+| first_name | last_name | hire_date  |
++------------+-----------+------------+
+| STEVEN     | KING      | 1987-06-17 |
+| DIANA      | LORENTZ   | 1987-06-25 |
+| LEX        | DE HAAN   | 1987-06-19 |
+| NEENA      | KOCHHAR   | 1987-06-18 |
+| ALEXANDER  | HUNOLD    | 1987-06-20 |
+| BRUCE      | ERNST     | 1987-06-21 |
+| DAVID      | AUSTIN    | 1987-06-22 |
+| VALLI      | PATABALLA | 1987-06-24 |
+| NANCY      | GREENBERG | 1987-06-26 |
+| DANIEL     | FAVIET    | 1987-06-27 |
++------------+-----------+------------+
+
+
+16.select first_name from employees where  first_name like 'b%' or 'c%';
+
+
++------------+
+| first_name |
++------------+
+| BRUCE      |
++------------+
+
+
+17. select last_name,job_id ,salary from employees where job_id = 'IT_PROG' or job_id = 'SA_MAN' and salary not in( 4500,10000,15000);
+
+
++-----------+---------+--------+
+| last_name | job_id  | salary |
++-----------+---------+--------+
+| LORENTZ   | IT_PROG |   4200 |
+| HUNOLD    | IT_PROG |   9000 |
+| ERNST     | IT_PROG |   6000 |
+| AUSTIN    | IT_PROG |   4800 |
+| PATABALLA | IT_PROG |   4800 |
+| GREENBERG | SA_MAN  |  12000 |
+| FAVIET    | SA_MAN  |   9000 |
++-----------+---------+--------+
+
+
+18.select last_name from employees where length(last_name)=6;
+
++-----------+
+| last_name |
++-----------+
+| HUNOLD    |
+| AUSTIN    |
+| FAVIET    |
++-----------+
+
+19. select last_name from employees where last_name like '__e%';
+
++-----------+
+| last_name |
++-----------+
+| GREENBERG |
++-----------+
+
+20. select distinct job_id from employees;
+
++---------+
+| job_id  |
++---------+
+| AD_PRES |
+| IT_PROG |
+| AD_VP   |
+| SA_MAN  |
++---------+
+
+21. select last_name from employees where last_name = 'blake' or last_nam e = 'king' or  last_name='scott' or  last_name='ford';
+
++-----------+
+| last_name |
++-----------+
+| KING      |
++-----------+
